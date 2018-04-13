@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+
+message RoomUsersInfo{
+	repeated User users = 2;
+}
+
+message User{
+	optional int32 userId = 1;
+	optional string name = 2;
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "board.proto";
+
+message ChannelObjectRequest {
+	optional int32 id = 1;
+	optional string command = 2;
+	
+	oneof ObjectEntity{
+		Login loginObject = 17;
+		JoinRoom joinRoomObject = 18;
+		CreateRoom createRoomObject = 19;
+		PaintPoint paintPointObject = 20;
+	}
+}
+
+message ChannelObjectResponse {
+	optional int32 id = 1;
+	optional string command = 2;
+	oneof ObjectEntity{
+		ResponseEntity responseMessage = 16;
+		Login loginObject = 17;
+		JoinRoom joinRoomObject = 18;
+		PaintPoint paintPointObject = 19;
+	}
+}
+
+
+message Login{
+	optional string name = 1;
+	optional string token = 2;
+}
+message JoinRoom{
+	optional string roomName = 1;
+	optional string name = 2;
+}
+
+message CreateRoom{
+	optional string roomName = 1;
+	optional string name = 2;
+}
+
+
+message PaintPoint{
+	optional string name = 1;
+	optional PointSet points = 2;
+}
+
+message ResponseEntity{
+	optional string msg = 1;
+	optional int32 code = 2;
+	optional int32 level = 3;
+}

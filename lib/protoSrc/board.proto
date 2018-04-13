@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message Point{
+	optional float x = 1;
+	optional float y = 2;
+	optional float width = 3;
+	optional uint32 color = 4;
+}
+
+message PointSet{
+	repeated Point point = 1;
+}
